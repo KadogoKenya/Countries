@@ -3,10 +3,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const contactForm = document.querySelector('.contact-form');
   const profilePhoto = document.querySelector('.profile-photo');
   const pagination = document.getElementById('pagination');
+  const section = document.getElementById('sectionId')
 
   let allCountries = [];
   let currentPage = 1;
   const countriesPerPage = 9; 
+
+  function navigateTo(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
 
   // Fetch data from local API or external one
   fetch('http://localhost:3500/countries')
@@ -100,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
       contactForm.reset();
     });
   }
+  
 
   // Profile scroll animation
   window.addEventListener('scroll', () => {
@@ -111,4 +120,5 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
+
 });
