@@ -1,52 +1,52 @@
 document.addEventListener('DOMContentLoaded', () => {
   const container = document.getElementById('countries-container');
+  const searchInput = document.getElementById('search-input');
+  const pagination = document.getElementById('pagination');
   const contactForm = document.querySelector('.contact-form');
   const profilePhoto = document.querySelector('.profile-photo');
-  const pagination = document.getElementById('pagination');
   const section = document.getElementById('sectionId')
 
   let allCountries = [];
   let currentPage = 1;
-  const countriesPerPage = 9; 
+  const countriesPerPage = 9;
+  let filteredCountries = [];
 
-  function navigateTo(sectionId) {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
-
-  // Fetch data from local API or external one
-  fetch('http://localhost:3500/countries')
+  // Fetch countries
+  fetch('https://restcountries.com/v3.1/all')
     .then(res => {
-      if (!res.ok) {
-        throw new Error(`Network response was not ok (${res.status})`);
-      }
+      if (!res.ok) throw new Error(`Network error: ${res.status}`);
       return res.json();
     })
     .then(data => {
-      console.log('Fetched data:', data); 
       allCountries = data;
+      filteredCountries = allCountries; // Initially show all
       renderPage(currentPage);
       renderPagination();
     })
-    .catch(err => {
-      console.error('Failed to fetch countries:', err);
-    });
+    .catch(err => console.error(err));
 
-  // Render countries by page
+  // Listen to input
+  searchInput.addEventListener('input', () => {
+    const searchTerm = searchInput.value.toLowerCase();
+    filteredCountries = allCountries.filter(country =>
+      country.name?.common?.toLowerCase().includes(searchTerm)
+    );
+    currentPage = 1;
+    renderPage(currentPage);
+    renderPagination();
+  });
+
   function renderPage(page) {
     container.innerHTML = '';
     const start = (page - 1) * countriesPerPage;
     const end = start + countriesPerPage;
-    const pageCountries = allCountries.slice(start, end);
+    const pageCountries = filteredCountries.slice(start, end);
 
     pageCountries.forEach(country => {
       container.appendChild(createCountryCard(country));
     });
   }
 
-  // Create one country card
   function createCountryCard(country) {
     const card = document.createElement('div');
     card.className = 'col-md-4 mb-4';
@@ -66,35 +66,33 @@ document.addEventListener('DOMContentLoaded', () => {
     return card;
   }
 
-  // Pagination buttons
   function renderPagination() {
     pagination.innerHTML = '';
-
-    const totalPages = Math.ceil(allCountries.length / countriesPerPage);
+    const totalPages = Math.ceil(filteredCountries.length / countriesPerPage);
 
     const prevBtn = document.createElement('button');
     prevBtn.className = 'btn btn-outline-primary me-2';
     prevBtn.textContent = 'Previous';
     prevBtn.disabled = currentPage === 1;
-    prevBtn.addEventListener('click', () => {
+    prevBtn.onclick = () => {
       if (currentPage > 1) {
         currentPage--;
         renderPage(currentPage);
         renderPagination();
       }
-    });
+    };
 
     const nextBtn = document.createElement('button');
     nextBtn.className = 'btn btn-outline-primary';
     nextBtn.textContent = 'Next';
     nextBtn.disabled = currentPage === totalPages;
-    nextBtn.addEventListener('click', () => {
+    nextBtn.onclick = () => {
       if (currentPage < totalPages) {
         currentPage++;
         renderPage(currentPage);
         renderPagination();
       }
-    });
+    };
 
     pagination.appendChild(prevBtn);
     pagination.appendChild(nextBtn);

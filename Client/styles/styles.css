@@ -49,6 +49,11 @@ a.active,a:hover{
     transition: .5s;
 }
 
+nav ul li a.active {
+  color: white;
+  background-color: blue;
+}
+
 
 .search-box{
     float: left;
@@ -442,25 +447,42 @@ a.active,a:hover{
     color: #fff;
   }
   
-/* card contennt ffor displaying the api data */
-/* #countries-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  padding: 20px;
-}
+/* adding hovering effect on the cards */
+  .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    will-change: transform;
+  }
+  
+  /* Hover effect: move card upward and slightly scale */
+  .card:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    z-index: 1; 
+  }
 
-.country-card {
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 15px;
-  text-align: center;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
+  /* for saerching according to countries */
+  #search-input {
+    max-width: 400px;
+    margin: 0 auto 20px;
+  }
 
-.country-card img {
-  width: 100px;
-  height: auto;
-  margin-bottom: 10px;
-} */
+
+  #filter {
+    background-color: #f9f9f9;
+    padding: 20px 0;
+  }
+  
+  .search-wrapper {
+    display: flex;
+    max-width: 500px;
+    margin: 0 auto;
+    gap: 10px;
+  }
+  
+  #search-input {
+    flex: 1;
+    padding: 10px 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
