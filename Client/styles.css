@@ -379,16 +379,135 @@ nav ul li a.active {
     }
 }
 
-.contact{
-    padding: 60px 20px;
-    background: #1b2c3e;
-    color: white;
-    text-align: center;
+.contact {
+  background-image: url('./Whole_world_-_land_and_oceans.jpg'); /* Replace with your image URL */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  padding: 80px 20px;
+  color: white;
 }
-.contact-container{
-    max-width: 700px;
-    margin: auto;
+
+.contact::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6); /* Dark overlay for readability */
+  z-index: 0;
 }
+
+.contact-overlay {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 900px;
+  margin: auto;
+}
+
+.contact-overlay h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.contact-overlay p {
+  margin-bottom: 30px;
+  color: #ccc;
+  font-size: medium;
+}
+
+.contact-container {
+  background: rgba(28, 53, 87, 0.8);
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 1rem;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #ccc;
+}
+
+.submit-btn {
+  padding: 12px 25px;
+  background-color: #1c3557;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #2980b9;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #ccc;
+}
+
+.submit-btn {
+  padding: 12px 25px;
+  background-color: #1c3557;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #2980b9;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  background: rgba(28, 53, 87, 0.8); /* semi-transparent */
+  color: white;
+  font-size: 1rem;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #ccc;
+}
+
+.submit-btn {
+  padding: 12px 25px;
+  background-color: #1c3557;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #2980b9;
+}
+
+
+
 .contact h2{
     font-size: 2.5rem;
     margin-bottom: 10px;
