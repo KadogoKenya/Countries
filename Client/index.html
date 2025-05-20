@@ -10,8 +10,11 @@
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script src="/Client/scripts/scripts.js"></script>
 </head>
+
+
 <body>
-    <!-- nav bar section -->
+<header>
+        <!-- nav bar section -->
 <nav>
     <input type="checkbox" id="check">
     <label for="check" class="checkbtn">
@@ -23,17 +26,30 @@
         <button>
             <i class="fa fa-search"></i>
         </button>
-       
-    </div>  
+    </div> 
+    <a id="theme-toggle-btn" class="theme-toggle w-6 cursor-pointer">
+  <!-- Light Mode Icon -->
+        <svg id="sun-icon" class="block dark-icon hidden" fill="currentColor" viewBox="0 0 20 20" width="24" height="24">
+            <path clip-rule="evenodd" fill-rule="evenodd"
+            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z">
+            </path>
+        </svg>
+
+  <!-- Dark Mode Icon -->
+        <svg id="moon-icon" class="hidden light-icon" fill="currentColor" viewBox="0 0 20 20" width="24" height="24">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+        </svg>
+    </a>
+    <!-- <button id="theme-toggle" class="btn btn-outline-secondary">Toggle Theme</button> -->
+
     <ul>
-        <li><a onclick="navigateTo('home')">Home</a></li>
-        <li><a onclick="navigateTo('countries')">Countries</a></li>
-        <li><a onclick="navigateTo('about')">About</a></li>
-        <li><a onclick="navigateTo('contact')">Contact</a></li>
+        <li><a class="active" href="#home">Home</a></li>
+        <li><a href="#countries">Countries</a></li>
+         <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>    
     </ul>
+ 
 </nav>
-<!-- the hero section begins here -->
-<header>
 
 </header>
 <!-- <body class="sectionId"> -->
@@ -42,7 +58,7 @@
       <div class="hero-content">
         <h1>Discover the World,<br>One Country at a Time.</h1>
         <p>Start your journey today—explore, learn, and connect globally.</p>
-        <a href="#explore" class="hero-btn">Explore Now</a>
+        <a href="#countries" class="hero-btn">Explore Now</a>
       </div>
     </div>
   </section>
@@ -53,11 +69,10 @@
     <section id="filter">
         <div class="container mt-4">
           <input type="text" id="search-input" class="form-control" placeholder="Search country by name...">
-          <!-- <button id="search-button">
-            <i class="fa fa-search"></i>
-        </button> -->
         </div>
-      </section>
+    </section>
+    <div id="loader" class="loader" style="display: none;"></div>
+
     <div class="container mt-5">
         <div id="countries-container" class="row"></div>
         
@@ -99,16 +114,16 @@
         <form action="/" class="contact-form">
             <div class="form-group">
                 <input type="text" name="name" placeholder="Your name" required>
-            </div>
+            </div><br>
             <div class="form-group">
                 <input type="text" name="email" placeholder="Your email" required>
 
-            </div>
+            </div><br>
             <div class="form-group">
-                <input type="text" name="name" placeholder="subject" required>
-            </div>
+                <input type="text" name="name" placeholder="Subject" required>
+            </div><br>
             <div class="form-group">
-                <input type="text" name="name" placeholder="message" required>
+                <input type="text" name="name" placeholder="Message" required>
             </div><br>
             <button type="submit" class="submit-btn">Send Message</button>
         </form>
@@ -126,10 +141,11 @@
             <p>Powered by <a href="https://restcountries.com/" target="_blank">REST Countries API</a></p>
           </div>
           <div class="footer-links">
-            <a href="#hero">Home</a>
+            <a href="#home">Home</a>
+            <a href="#countries">Countries</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
-            <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+            <a href="https://github.com/KadogoKenya" target="_blank">GitHub</a>
           </div>
         </div>
       </footer>
